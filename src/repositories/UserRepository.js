@@ -6,8 +6,11 @@
  * - Memisahkan business logic dari storage logic
  * - Mudah untuk testing dan switching storage
  */
-const User = require('../models/User')
-
+if (typeof require !== 'undefined' && typeof module !== 'undefined'){
+    if (typeof User === 'undefined') {
+        User = require('../models/User');
+    }
+}
 class UserRepository {
     constructor(storageManager) {
         this.storage = storageManager;
